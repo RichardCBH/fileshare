@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FileShareApp.MainPage"
+             Title="IPv6 FileShare">
+    <ScrollView>
+        <VerticalStackLayout
+            Spacing="25"
+            Padding="30,0"
+            VerticalOptions="Center">
+
+            <Label
+                Text="FileShare - IPv6 HTTP 文件共享"
+                Style="{StaticResource Headline}"
+                SemanticProperties.HeadingLevel="Level1" />
+
+            <Label
+                Text="选择手机文件夹并启动 HTTP 服务器，其他设备可以通过 IPv6 访问下载文件"
+                Style="{StaticResource SubHeadline}"
+                SemanticProperties.HeadingLevel="Level2" />
+
+            <Entry x:Name="PortEntry" 
+                   Text="8080"
+                   Placeholder="端口号"
+                   Keyboard="Numeric"
+                   MaximumLength="5" />
+
+            <Button x:Name="PickFolderButton"
+                    Text="选择要共享的文件夹"
+                    Clicked="OnPickFolderClicked" />
+
+            <Label x:Name="FolderLabel"
+                   Text="未选择文件夹"
+                   TextColor="Gray" />
+
+            <Button x:Name="StartButton"
+                    Text="启动 HTTP 服务器"
+                    Clicked="OnStartServerClicked" />
+
+            <Label x:Name="StatusLabel"
+                   Text="服务器未启动"
+                   FontAttributes="Bold" />
+
+            <Label x:Name="UrlLabel"
+                   Text=""
+                   TextColor="Blue" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,44 @@
+name: Build Android APK (Debug)
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup .NET 8
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Install MAUI workload
+        run: dotnet workload install maui
+
+      - name: Restore .NET workloads
+        run: dotnet workload restore
+
+      - name: Restore packages
+        run: dotnet restore
+
+      - name: Build Android Debug APK
+        run: |
+          dotnet publish FileShareApp/FileShareApp.csproj \
+            -f net8.0-android \
+            -c Debug \
+            -o ./artifacts \
+            --no-restore
+
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: FileShareApp-Android-Debug-APK
+          path: artifacts/**/*.apk
+          retention-days: 30
