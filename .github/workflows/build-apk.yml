@@ -26,7 +26,7 @@ jobs:
         run: dotnet workload install maui-android
 
       - name: Restore packages
-        run: dotnet restore FileShareApp/FileShareApp.csproj
+        run: dotnet restore FileShareApp/FileShareApp.csproj -p:CheckEolTargetFramework=false
 
       - name: Build Android Debug APK
         run: |
@@ -34,6 +34,7 @@ jobs:
             -f net8.0-android \
             -c Debug \
             -o ./artifacts \
+            -p:CheckEolTargetFramework=false \
             --no-restore
 
       - name: Upload APK artifact
