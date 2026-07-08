@@ -51,7 +51,6 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource Black}, Dark={StaticResource White}}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
         <Setter Property="FontFamily" Value="OpenSansRegular"/>
-        <Setter Property="PlaceholderColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
     </Style>
 
     <Style TargetType="Entry">
@@ -118,8 +117,7 @@
     </Style>
 
     <Style TargetType="Stepper">
-        <Setter Property="MinimumTrackColor" Value="{AppThemeBinding Light={StaticResource Primary}, Dark={StaticResource White}}" />
-        <Setter Property="MaximumTrackColor" Value="{AppThemeBinding Light={StaticResource Gray200}, Dark={StaticResource Gray500}}" />
+        <!-- MinimumTrackColor and MaximumTrackColor removed: not supported on Stepper in current MAUI versions -->
     </Style>
 
     <Style TargetType="Switch">
