@@ -19,11 +19,13 @@ jobs:
         with:
           dotnet-version: '8.0.x'
 
-      - name: Install MAUI workload
-        run: dotnet workload install maui
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
 
-      - name: Restore .NET workloads
-        run: dotnet workload restore
+      - name: Install MAUI workload
+        run: |
+          dotnet workload install maui
+          dotnet workload install android
 
       - name: Restore packages
         run: dotnet restore
